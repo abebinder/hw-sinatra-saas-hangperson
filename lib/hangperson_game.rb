@@ -17,14 +17,10 @@ class HangpersonGame
   attr_accessor :word, :guesses, :wrong_guesses
 
   def guess(letter)
-    letter = letter.downcase
-    return false if @guesses.include? letter or @wrong_guesses.include? letter
-
-    if @word.include? letter
-        @guesses.concat(letter)
-    else
-      @wrong_guesses.concat(letter)
-    end
+    raise ArgumentError unless letter.instance_of?(String) && letter.match(/\A[a-zA-z]\z/)
+    letter.downcase!
+    return false if @guesses.include?(letter) || @wrong_guesses.include?(letter)
+    (@word.include? letter) ? @guesses.concat(letter) : @wrong_guesses.concat(letter)
     true
   end
   # You can test it by running $ bundle exec irb -I. -r app.rb
