@@ -12,15 +12,23 @@ class HangpersonGame
     @word = word
     @guesses = ""
     @wrong_guesses = ""
+    @word_with_guesses = word.gsub(/./,"-")
   end
 
-  attr_accessor :word, :guesses, :wrong_guesses
+  attr_accessor :word, :guesses, :wrong_guesses, :word_with_guesses
 
   def guess(letter)
     raise ArgumentError unless letter.instance_of?(String) && letter.match(/\A[a-zA-z]\z/)
     letter.downcase!
     return false if @guesses.include?(letter) || @wrong_guesses.include?(letter)
-    (@word.include? letter) ? @guesses.concat(letter) : @wrong_guesses.concat(letter)
+
+    if @word.include? letter
+      @guesses.concat(letter)
+      @word.each_char.with_index {|char, index| @word_with_guesses[index] = letter if char == letter}
+    else
+      @wrong_guesses.concat(letter)
+    end
+
     true
   end
   # You can test it by running $ bundle exec irb -I. -r app.rb
