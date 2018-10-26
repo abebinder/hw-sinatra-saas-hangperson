@@ -55,11 +55,11 @@ describe HangpersonGame do
         @game.guess('a')
         expect(@game.guesses).to eq('a')
       end
-      it 'does not change wrong guess list', :pending => true do
+      it 'does not change wrong guess list' do
         @game.guess('q')
         expect(@game.wrong_guesses).to eq('q')
       end
-      it 'returns false', :pending => true do
+      it 'returns false' do
         expect(@game.guess('a')).to be false
         expect(@game.guess('q')).to be false
       end
