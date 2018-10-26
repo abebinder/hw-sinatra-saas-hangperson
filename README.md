@@ -13,7 +13,7 @@ In this assignment you'll be introduced to part of the basic cycle of creating S
 
 Learning Goals
 --------------
-After completing this assignment, you will be able to:
+After completing this assignment, you will be able to: fxing test
 
 * Create and deploy simple SaaS apps in your development environment, and deploy them to the public cloud
 * Practice the basic workflow of test-driven development (TDD), in which tests are written before the code (so they fail when first run) and code is then added to make them pass
