@@ -17,6 +17,7 @@ class HangpersonGame
   attr_accessor :word, :guesses, :wrong_guesses
 
   def guess(letter)
+    letter = letter.downcase
     return false if @guesses.include? letter or @wrong_guesses.include? letter
 
     if @word.include? letter
