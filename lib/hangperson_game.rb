@@ -15,6 +15,12 @@ class HangpersonGame
     @word_with_guesses = word.gsub(/./,"-")
   end
 
+  def check_win_or_lose
+    return :lose if @wrong_guesses.length > 6
+    return :win unless @word_with_guesses.match('-')
+    return :play
+  end
+
   attr_accessor :word, :guesses, :wrong_guesses, :word_with_guesses
 
   def guess(letter)
