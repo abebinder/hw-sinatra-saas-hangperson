@@ -10,8 +10,21 @@ class HangpersonGame
   
   def initialize(word)
     @word = word
+    @guesses = ""
+    @wrong_guesses = ""
   end
 
+  attr_accessor :word, :guesses, :wrong_guesses
+
+  def guess(letter)
+    if @word.include? letter
+        @guesses.concat(letter)
+        return true
+    else
+      @wrong_guesses.concat(letter)
+      return false
+      end
+  end
   # You can test it by running $ bundle exec irb -I. -r app.rb
   # And then in the irb: irb(main):001:0> HangpersonGame.get_random_word
   #  => "cooking"   <-- some random word
