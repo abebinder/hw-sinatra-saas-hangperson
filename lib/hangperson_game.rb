@@ -17,13 +17,14 @@ class HangpersonGame
   attr_accessor :word, :guesses, :wrong_guesses
 
   def guess(letter)
+    return false if @guesses.include? letter or @wrong_guesses.include? letter
+
     if @word.include? letter
         @guesses.concat(letter)
-        return true
     else
       @wrong_guesses.concat(letter)
-      return false
-      end
+    end
+    true
   end
   # You can test it by running $ bundle exec irb -I. -r app.rb
   # And then in the irb: irb(main):001:0> HangpersonGame.get_random_word
